@@ -10,17 +10,25 @@ import img2 from '../../../assets/home/slide2.jpg'
 import img3 from '../../../assets/home/slide3.jpg'
 import img4 from '../../../assets/home/slide4.jpg'
 import img5 from '../../../assets/home/slide5.jpg'
+import SectionTitle from '../../../components/SectionTitl/SectionTitle';
 const Category = () => {
     return (
-        <Swiper
+       <section>
+        <SectionTitle subHeading={'From 11.0 am to 10.00PM'}
+        heading={"Order Online"}
+       
+        ></SectionTitle>
+         <Swiper
+        
         slidesPerView={4}
         spaceBetween={30}
         centeredSlides={true}
+        centerMode={false}
         pagination={{
           clickable: true,
         }}
         modules={[Pagination]}
-        className="mySwiper mb-5"
+        className="mySwiper mb-5  text-center"
       >
         <SwiperSlide>
             <img src={img1} alt="" />
@@ -49,6 +57,7 @@ const Category = () => {
        
         
       </Swiper>
+       </section>
     );
 };
 
