@@ -1,13 +1,7 @@
 import React from 'react';
 import bg from '../../../assets/home/chef-service.jpg'
 const PicAndInfo = () => {
-    let me={
-        display: "grid",
-        width: 100,
-        "place-items": "center",
-       " background-size": "cover",
-        "background-position": "center"
-    }
+   
     return (
         <div className=" place-items-center bg-cover  bg-center grid h-80" style={{ backgroundImage: `url(${bg})` }}>
        
