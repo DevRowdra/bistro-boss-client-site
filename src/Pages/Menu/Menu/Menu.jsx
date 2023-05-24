@@ -10,11 +10,7 @@ const Menu = () => {
         <title>Bistro Boss || Menu</title>
       </Helmet>
       <Cover img={img} title={'Our Menu'}></Cover>
-      <PopularMenu></PopularMenu>
-      <Cover img={img} title={'Our Menu'}></Cover>
-      <PopularMenu></PopularMenu>
-      <Cover img={img} title={'Our Menu'}></Cover>
-      <PopularMenu></PopularMenu>
+      
     </div>
   );
 };
