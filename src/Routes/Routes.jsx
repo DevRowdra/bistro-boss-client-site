@@ -7,6 +7,9 @@ import Home from "../Pages/Home/Home/Home";
 import Menu from "../Pages/Menu/Menu/Menu";
 import Order from "../Pages/Order/Order/Order";
 import Login from "../Pages/Login/Login";
+import SingUp from "../Pages/Login/SingUp";
+
+
   export const router = createBrowserRouter([
     {
       path: "/",
@@ -24,10 +27,14 @@ import Login from "../Pages/Login/Login";
             path:'/login',
             element:<Login></Login>
         },
+       
         {
             path:'/order/:category',
             element:<Order></Order>
-        }
+        },
+        {path: '/singup'
+      , element:<SingUp></SingUp>
+      }
       ]
     },
   ]);

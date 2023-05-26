@@ -6,7 +6,7 @@ import NavBar from '../Shared/NavBar/NavBar';
 const Main = () => {
     const location=useLocation()
     console.log(location)
-    const noheaderFooter=location.pathname.includes('login')
+    const noheaderFooter=location.pathname.includes('login') || location.pathname.includes('singup')
     console.log(noheaderFooter)
     return (
         <div>
