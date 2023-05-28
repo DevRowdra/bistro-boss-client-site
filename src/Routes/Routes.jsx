@@ -8,6 +8,8 @@ import Menu from "../Pages/Menu/Menu/Menu";
 import Order from "../Pages/Order/Order/Order";
 import Login from "../Pages/Login/Login";
 import SingUp from "../Pages/Login/SingUp";
+import Dashboard from "../Layout/Dashboard";
+import MyCart from "../Pages/Dashboard/Mycart/Mycart";
 
 
   export const router = createBrowserRouter([
@@ -35,6 +37,17 @@ import SingUp from "../Pages/Login/SingUp";
         {path: '/singup'
       , element:<SingUp></SingUp>
       }
-      ]
-    },
+      ],
+    
+    },{
+      path:'dashboard',
+      element:<Dashboard></Dashboard>,
+      children:[
+        {
+          path:'mycart',
+          element:<MyCart></MyCart>
+        }
+        
+      ],
+    }
   ]);

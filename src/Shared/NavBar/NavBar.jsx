@@ -24,7 +24,7 @@ console.log(user)
          <li><Link to={'/menu'}>Our Menu</Link></li>
          <li><Link to={'/order/dessert'}>Order</Link></li>
          <li>
-          <Link to='/'>
+          <Link to='/dashboard/mycart'>
           <button className="btn gap-2">
   <FaShoppingCart></FaShoppingCart>
   <div className="badge badge-secondary">+{cart?.length}</div>
