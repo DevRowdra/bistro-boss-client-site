@@ -1,14 +1,46 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-
+import { AuthContext } from '../../Auth/AuthProvider';
+import { FaBeer, FaShoppingCart } from 'react-icons/fa';
+import useCart from '../../Hooks/useCart';
 const NavBar = () => {
+
+const[cart]=useCart()
+
+  const {user,logOut}=useContext(AuthContext)
+
+
+
+console.log(user)
+  const handleLogout=()=>{
+    logOut()
+    .then(()=>{})
+    .catch((error)=>{
+      console.log(error.message)
+    })
+  }
     const navItem= <>
         <li><Link to={'/'}>Home</Link></li>
          <li><Link to={'/menu'}>Our Menu</Link></li>
          <li><Link to={'/order/dessert'}>Order</Link></li>
-         <li><Link to={'/login'}>Login</Link></li>
+         <li>
+          <Link to='/'>
+          <button className="btn gap-2">
+  <FaShoppingCart></FaShoppingCart>
+  <div className="badge badge-secondary">+{cart?.length}</div>
+</button>
+          </Link>
+         </li>
+         
+       {
+        user ? <>
+        <span>{user?.displayName}</span>
+        <button onClick={handleLogout} className="btn btn-active btn-ghost">LogOut</button>
+        </>:<>
+<li><Link to={'/login'}>Login</Link></li>
+        </>
+       }
        
-        <li><a>Item 3</a></li>
     </>
     return (
         <div className="navbar fixed z-10 bg-opacity-60 max-w-screen-xl bg-base-100">
