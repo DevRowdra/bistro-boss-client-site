@@ -5,13 +5,14 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 import Swal from 'sweetalert2'
+import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 const Login = () => {
     const[disable,setDisable]=useState(true)
     const {singIn}=useContext(AuthContext)
     const location=useLocation()
-    const Navigate=useNavigate()
-    const forms=location.state?.form?.pathName || '/'
-
+    const navigate=useNavigate()
+    const forms=location.state?.from?.pathname || '/'
+console.log(forms)
     const handleLogin=(e)=>{
         e.preventDefault()
         const form=e.target
@@ -28,11 +29,11 @@ const Login = () => {
             showConfirmButton: false,
             timer: 1500
           })
-          Navigate(forms,{replace:true})
+          navigate(forms,{replace:true})
           console.log(user)
         })
         .catch(error=>{
-          console.log(error.massage)
+          console.log(error.message)
         })
     }
     const handlValidateCaptcha=e=>{
@@ -90,6 +91,7 @@ const Login = () => {
       </div>
     <p><small>New here? <Link to={'/singup'}>Register</Link></small></p>
     </form>
+    <SocialLogin></SocialLogin>
   </div>
 </div>
     </>

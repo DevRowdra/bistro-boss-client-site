@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Auth/AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
+import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 const SingUp = () => {
   const { createUser, updateUserProfiles } = useContext(AuthContext);
   const Navigate = useNavigate();
@@ -17,13 +18,27 @@ const SingUp = () => {
     createUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
-        updateUserProfiles(data.name, data.photoUrl)
-        .then(() => {
+        updateUserProfiles(data.name, data.photoUrl).then(() => {
+          const saveUser = { user: data.name, email: data.email };
+          fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json',
+            },
+            body: JSON.stringify(saveUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              if (data.insertedId) {
+              }
+            });
+
           reset();
           console.log('formmmm updated');
+          Navigate('/');
         });
         console.log(user);
-        Navigate('/');
       })
       .catch((error) => {
         console.log(error.message);
@@ -136,6 +151,7 @@ const SingUp = () => {
                 />
               </div>
             </form>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>
